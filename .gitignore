@@ -1,4 +1,7 @@
 # Logs
+.DS_Store
+front-end/public/lib/**
+front-end/public/libs/**
 logs
 *.log
 npm-debug.log*
