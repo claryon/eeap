@@ -1,5 +1,13 @@
 lib-cov
 *.seed
+=======
+# Logs
+.DS_Store
+front-end/public/lib/**
+front-end/public/libs/**
+logs
+
+
 *.log
 *.csv
 *.dat
@@ -13,5 +21,3 @@ results
 
 npm-debug.log
 node_modules
-
-public/libs
