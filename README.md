@@ -10,3 +10,7 @@ npm install
 bower install
 
 ```
+## Execution
+```
+node server.js
+```
