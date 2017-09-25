@@ -1,3 +1,3 @@
-module.exports = {
-	url:"mongodb://localhost/fisma_dev"
+module.export = {
+	url: 'mongodb://localhost/stencil-dev'
 }
