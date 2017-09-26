@@ -1,5 +1,11 @@
-<h1>Our MongoDB is Working!</h1>
+<h1>EEAP node</h1>
 
-<ul>
-  <li *ngFor="let report of reports" (click)="onSelect(report)">{{ report.name }}</li>
-</ul>
+<nav>
+<a routerLink="/overview">Overview</a>
+<a routerLink="/search">Search</a>
+</nav>
+
+<!-- automatically shows component linked to route in app.module.ts -->
+<router-outlet></router-outlet>
+
+

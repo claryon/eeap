@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { Report } from './report';
+
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -10,7 +12,7 @@ export class DataService {
 
   constructor(private _http: Http) { }
 
-  getReports() {
+  getReports()  {
     return this._http.get("/api/reports")
       .map(result => this.result = result.json().data);
   }

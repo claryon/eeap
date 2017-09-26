@@ -5,16 +5,37 @@ import { AppComponent } from './app.component';
 // Import the Http Module and our Data Service
 import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
-import { ReportComponent } from './report/report.component';
+import { SearchComponent } from './search/search.component';
+import { OverviewComponent } from './overview/overview.component';
+
+import { RouterModule }   from '@angular/router';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReportComponent
+    SearchComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      {
+        path: 'overview',
+        component: OverviewComponent
+      },
+      {
+        path: 'search',
+        component: SearchComponent
+      },
+      {
+        path: '',
+        redirectTo: '/overview',
+        pathMatch: 'full'
+      }
+    ])
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

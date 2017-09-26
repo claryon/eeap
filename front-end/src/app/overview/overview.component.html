@@ -1,0 +1,5 @@
+<h2>Overview of reports</h2>
+
+<ul>
+  <li *ngFor="let report of reports" (click)="onSelect(report)">{{ report.name }}</li>
+</ul>

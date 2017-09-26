@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
-// Import the DataService
-import { DataService } from './data.service';
+
 
 @Component({
   selector: 'app-root',
@@ -9,25 +8,12 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // Define a users property to hold our user data
-  reports: Array<any>;
+  
+  constructor() {}
 
-  // Create an instance of the DataService through dependency injection
-  constructor(private _dataService: DataService) {
 
-    // Access the Data Service's getReports() method we defined
-    this._dataService.getReports()
-        .subscribe(res => this.reports = res);
-  }
-
-  onSelect(report: Report): void {
-    alert("Selected report " + report.name);
-  }
 }
 
 
-// tryout
-export class Report {
-  name: String;
-}
+
 
