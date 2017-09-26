@@ -19,4 +19,15 @@ export class AppComponent {
     this._dataService.getReports()
         .subscribe(res => this.reports = res);
   }
+
+  onSelect(report: Report): void {
+    alert("Selected report " + report.name);
+  }
 }
+
+
+// tryout
+export class Report {
+  name: String;
+}
+

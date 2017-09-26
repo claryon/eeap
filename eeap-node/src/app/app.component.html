@@ -1,5 +1,5 @@
 <h1>Our MongoDB is Working!</h1>
 
 <ul>
-  <li *ngFor="let report of reports">{{ report.name }}</li>
+  <li *ngFor="let report of reports" (click)="onSelect(report)">{{ report.name }}</li>
 </ul>
