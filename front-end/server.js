@@ -1,20 +1,31 @@
-// modules =================================================
-var express        = require('express');
-var app            = express();
-var bodyParser     = require('body-parser');
-var methodOverride = require('method-override');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const http = require('http');
+const app = express();
 
-var db = require('./config/db');
+// API file for interacting with MongoDB
+const api = require('./server/routes/api');
 
-var port = process.env.PORT || 8080;
-
+// Parsers
 app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride('X-HTTP-Method-Override'));
-app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({ extended: false}));
 
-require('./app/routes')(app); // configure our routes
+// Angular DIST output folder
+app.use(express.static(path.join(__dirname, 'dist')));
 
-app.listen(port);
-exports = module.exports = app;           
+// API location
+app.use('/api', api);
+
+// Send all other requests to the Angular app
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
+//Set Port
+const port = process.env.PORT || '3000';
+app.set('port', port);
+
+const server = http.createServer(app);
+
+server.listen(port, () => console.log(`Running on localhost:${port}`));
