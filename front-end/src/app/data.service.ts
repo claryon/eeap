@@ -14,17 +14,17 @@ export class DataService {
 
   getReports()  {
     return this._http.get("/api/reports")
-      .map(result => this.result = result.json().data);
+      .map(result => this.result = <Report[]> result.json().data);
   }
 
   getReport(reportId) {
     return this._http.get("/api/report/"+reportId)
-      .map(result => this.result = result.json().data);
+      .map(result => this.result = <Report> result.json().data);
   }
 
   searchReports(query) {
     return this._http.get("/api/reports/search?"+query)
-      .map(result => this.result = result.json().data);
+      .map(result => this.result = <Report[]> result.json().data);
   }
 
 }

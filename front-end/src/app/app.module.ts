@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 // Import the Http Module and our Data Service
 import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
@@ -10,7 +13,6 @@ import { SearchComponent } from './search/search.component';
 import { OverviewComponent } from './overview/overview.component';
 
 import { RouterModule }   from '@angular/router';
-
 
 
 @NgModule({
@@ -24,6 +26,7 @@ import { RouterModule }   from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot([
       {
         path: 'overview',

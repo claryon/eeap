@@ -1,11 +1,23 @@
-<h1>EEAP node</h1>
-
-<nav>
-<a routerLink="/overview">Overview</a>
-<a routerLink="/search">Search</a>
+<nav class="navbar navbar-expand navbar-light bg-light">
+	<div class="container">
+		<a class="navbar-brand" href="#">EEAP node</a>
+	
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+  				<li class="nav-item">
+					<a class="nav-link" routerLink="/overview">Overview</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/search">Search</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 </nav>
 
-<!-- automatically shows component linked to route in app.module.ts -->
-<router-outlet></router-outlet>
+<div class="container">
+	<!-- automatically shows component linked to route in app.module.ts -->
+	<router-outlet></router-outlet>
+</div>
 
 

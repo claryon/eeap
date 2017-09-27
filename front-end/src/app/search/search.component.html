@@ -2,18 +2,52 @@
 
 <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
 
-<div class="field">
-	<label for="reportName">Report name</label>
-	<input type="text" id="reportName" [formControl]="searchForm.controls['reportName']">
+<div class="container">
+	<div class="form-group row">
+		<label class="col-xs-3 col-form-label mr-2" for="reportSubmissionDate">Submission date contains</label>
+		<div class="col-xs-9">
+			<input class="form-control" type="text" id="reportSubmissionDate" [formControl]="searchForm.controls['reportSubmissionDate']">
+		</div>
+	</div>
 
-	<button type="submit">Search</button>
+	<div class="form-group row">
+		<label class="col-xs-3 col-form-label mr-2" for="reportId">Report identifier contains</label>
+		<div class="col-xs-9">
+			<input class="form-control" type="text" id="reportId" [formControl]="searchForm.controls['reportId']">
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="col-xs-3 col-form-label mr-2" for="reportIssuerName">Issuer name contains</label>
+		<div class="col-xs-9">
+			<input class="form-control" type="text" id="reportIssuerName" [formControl]="searchForm.controls['reportIssuerName']">
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<button class="btn btn-primary" type="submit">Search</button>
+	</div>
 </div>
 </form>
 
 
 <h3>Search results</h3>
 
-<ul>
-  <li *ngFor="let report of reports" (click)="onSelect(report)">{{ report.name }}</li>
-</ul>
-
+<table class="table">
+	<thead>
+		<th>Submission date</th>
+		<th>Report ID</th>
+		<th>Issuer name</th>
+		<th></th>
+	</thead>
+	<tbody>
+  		<tr *ngFor="let report of reports">
+  			<td>{{ report.timestamp.submission }}</td>
+  			<td>{{ report.reportIdentification.reportId }}</td>
+  			<td>{{ report.issuerIdentification.name }}</td>
+  			<td>
+  				<a href="{{ report.reportSource.NCAReportURL}}">Download</a>
+  			</td>
+  		</tr>
+  	</tbody>
+</table>

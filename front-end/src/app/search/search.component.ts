@@ -13,19 +13,23 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class SearchComponent {
 
   searchForm: FormGroup;
-  reports;
+  reports: Report[];
   
 	constructor(fb: FormBuilder, private _dataService: DataService) {
 
 		this.searchForm = fb.group({
-      'reportName': ['test']
+      'reportSubmissionDate': [''],
+      'reportId': [''],
+      'reportIssuerName': ['']
     });
 	}
 
   onSubmit(value: Object): void {
-    let reportName = this.searchForm.get('reportName').value;
+    let reportSubmissionDate = this.searchForm.get('reportSubmissionDate').value;
+    let reportId = this.searchForm.get('reportId').value;
+    let reportIssuerName = this.searchForm.get('reportIssuerName').value;
 
-    this._dataService.searchReports('name='+reportName).subscribe(res => this.reports = res);
+    this._dataService.searchReports('submissionDate='+reportSubmissionDate+'&reportId='+reportId+'&reportIssuerName='+reportIssuerName).subscribe(res => this.reports = res);
   }
   
 

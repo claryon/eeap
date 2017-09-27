@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 
 const querystring = require('querystring');
@@ -15,15 +14,46 @@ var Report = require('../models/report');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
+Report.remove({}, function(err) {
+    if (err) console.log("Error emptying collection", err);
+});
 
-// Connect
-const connection = (closure) => {
-    return MongoClient.connect('mongodb://localhost:27017/eeap', (err, db) => {
-        if (err) return console.log(err);
-
-        closure(db);
-    });
-};
+var newReport1 = new Report({
+    timestamp: {
+        registration: '28/09/2017',
+        submission: '29/09/2017'
+    },
+    issuerIdentification: {
+        LEI: 'myLEI',
+        name: 'My company',
+        language: 'EN',
+        registrationCountry: 'BE'
+    },
+    reportIdentification: {
+        reportId: 'report1',
+        regulationType: 'Type1',
+        auditorId: 'auditor1',
+        standardCode: 'STD',
+        reportingCode: 'REP'
+    },
+    NCAIdentification: {
+        stateAuthority: 'National regulator',
+        NCAcountryIdentification: 'BE',
+        OAMCountryIdentification: 'BE'
+    },
+    reportSource: {
+        NCAReportURL: 'http://www.nca.com/report123',
+        IssuerReportURL: 'http://www.issuer.com/report123',
+        EEAP_ReportURL: 'http://www.eeap.com/report123',
+    },
+    checkSum: {
+        checkSumElectronic: 'a9213e2df',
+        checksumNonEdit: 'd81a9384cc'
+    }
+});
+newReport1.save(function (err, newReport1) {
+    if (err) return console.log(err);
+});
 
 // Error handling
 const sendError = (err, res) => {
@@ -46,44 +76,22 @@ router.get('/reports', (req, res) => {
         response.data = reports;
         res.json(response);
     });
-    /*
-    connection((db) => {
-        db.collection('reports')
-            .find()
-            .toArray()
-            .then((reports) => {
-                response.data = reports;
-                res.json(response);
-            })
-            .catch((err) => {
-                sendError(err, res);
-            });
-    });
-    */
 });
 
 router.get('/reports/search', (req, res) => {
 
-    Report.find({name: new RegExp(req.query.name, 'i')}).exec(function(err, reports) {
+    Report.find(
+        {
+            $and: [
+                { 'timestamp.submission': new RegExp(req.query.submissionDate, 'i') },
+                { 'reportIdentification.reportId': new RegExp(req.query.reportId, 'i') },
+                { 'issuerIdentification.name': new RegExp(req.query.reportIssuerName, 'i') }
+            ]
+        }
+    ).exec(function(err, reports) {
         if (err) sendError(err, res);
         response.data= reports;
         res.json(response);
-    });
-});
-
-router.get('/report/:reportId', (req, res) => {
-    console.log(req.params.reportId);
-
-    connection((db) => {
-        db.collection('reports')
-            .findOne({ "_id": new ObjectID(req.params.reportId) })
-            .then((report) => {
-                response.data = report;
-                res.json(response);
-            })
-            .catch((err) => {
-                sendError(err, res);
-            });
     });
 });
 

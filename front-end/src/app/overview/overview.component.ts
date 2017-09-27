@@ -23,10 +23,6 @@ export class OverviewComponent implements OnInit {
 			.subscribe(res => this.reports = res);
 	}
 
-	onInput(report: Report): void {
-    	alert("Selected report " + report.name);
- 	}
-
 	ngOnInit() {
 	}
 
