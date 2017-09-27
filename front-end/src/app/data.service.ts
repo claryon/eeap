@@ -22,4 +22,9 @@ export class DataService {
       .map(result => this.result = result.json().data);
   }
 
+  searchReports(query) {
+    return this._http.get("/api/reports/search?"+query)
+      .map(result => this.result = result.json().data);
+  }
+
 }

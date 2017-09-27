@@ -1,3 +1,19 @@
-<p>
-  Search form
-</p>
+<h1>Search reports</h1>
+
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
+
+<div class="field">
+	<label for="reportName">Report name</label>
+	<input type="text" id="reportName" [formControl]="searchForm.controls['reportName']">
+
+	<button type="submit">Search</button>
+</div>
+</form>
+
+
+<h3>Search results</h3>
+
+<ul>
+  <li *ngFor="let report of reports" (click)="onSelect(report)">{{ report.name }}</li>
+</ul>
+
