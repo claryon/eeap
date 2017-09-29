@@ -20,8 +20,8 @@ Report.remove({}, function(err) {
 
 var newReport1 = new Report({
     timestamp: {
-        registration: '28/09/2017',
-        submission: '29/09/2017'
+        registration: new Date('2017-09-28'),
+        submission: new Date('2017-09-29')
     },
     issuerIdentification: {
         LEI: 'myLEI',
@@ -52,6 +52,43 @@ var newReport1 = new Report({
     }
 });
 newReport1.save(function (err, newReport1) {
+    if (err) return console.log(err);
+});
+
+var newReport2 = new Report({
+    timestamp: {
+        registration: new Date('2017-10-01'),
+        submission: new Date('2017-10-01')
+    },
+    issuerIdentification: {
+        LEI: 'myLEI',
+        name: 'My company',
+        language: 'EN',
+        registrationCountry: 'BE'
+    },
+    reportIdentification: {
+        reportId: 'report2',
+        regulationType: 'Type1',
+        auditorId: 'auditor1',
+        standardCode: 'STD',
+        reportingCode: 'REP'
+    },
+    NCAIdentification: {
+        stateAuthority: 'National regulator',
+        NCAcountryIdentification: 'BE',
+        OAMCountryIdentification: 'BE'
+    },
+    reportSource: {
+        NCAReportURL: 'http://www.nca.com/report124',
+        IssuerReportURL: 'http://www.issuer.com/report124',
+        EEAP_ReportURL: 'http://www.eeap.com/report124',
+    },
+    checkSum: {
+        checkSumElectronic: 'a9213e2df',
+        checksumNonEdit: 'd81a9384cc'
+    }
+});
+newReport2.save(function (err, newReport1) {
     if (err) return console.log(err);
 });
 

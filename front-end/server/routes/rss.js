@@ -56,7 +56,7 @@ function json2xml(o, tab) {
 
 // Get reports
 router.get('/rss', (req, res) => {
-	Report.find().exec(function(err, reports) {
+	Report.find().sort({'timestamp.submission': 'desc'}).limit(100).exec(function(err, reports) {
         res.set('Content-Type', 'text/xml');
         if (err) res.send(xml('<error>'+err+'</error>'));
         var xml = xmlify(reports, 'reports');
