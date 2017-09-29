@@ -106,30 +106,42 @@ let response = {
     message: null
 };
 
+
+router.get('/reports/search', (req, res) => {
+
+    if (req.query.submissionDate == '') {
+        var query = {
+            $and: [
+                { 'reportIdentification.reportId': new RegExp(req.query.reportId, 'i') },
+                { 'issuerIdentification.name': new RegExp(req.query.reportIssuerName, 'i') }
+            ]
+        }
+    } else {
+        var query = {
+            $and: [
+                { 'timestamp.submission': new Date(req.query.submissionDate) },
+                { 'reportIdentification.reportId': new RegExp(req.query.reportId, 'i') },
+                { 'issuerIdentification.name': new RegExp(req.query.reportIssuerName, 'i') }
+            ]
+        }
+    }
+
+    Report.find(query).exec(function(err, reports) {
+        if (err) return sendError(err, res);
+        response.data= reports;
+        res.json(response);
+    });
+});
+
 // Get reports
 router.get('/reports', (req, res) => {
     Report.find().exec(function(err, reports) {
-        if (err) sendError(err, res);
+        if (err) return sendError(err, res);
         response.data = reports;
         res.json(response);
     });
 });
 
-router.get('/reports/search', (req, res) => {
 
-    Report.find(
-        {
-            $and: [
-                { 'timestamp.submission': new RegExp(req.query.submissionDate, 'i') },
-                { 'reportIdentification.reportId': new RegExp(req.query.reportId, 'i') },
-                { 'issuerIdentification.name': new RegExp(req.query.reportIssuerName, 'i') }
-            ]
-        }
-    ).exec(function(err, reports) {
-        if (err) sendError(err, res);
-        response.data= reports;
-        res.json(response);
-    });
-});
 
 module.exports = router;

@@ -11,8 +11,6 @@ const api = require('./server/routes/api');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-// Angular DIST output folder
-app.use(express.static(path.join(__dirname, 'dist')));
 
 // API location
 app.use('/api', api);
@@ -20,6 +18,11 @@ app.use('/api', api);
 // RSS
 const rss = require('./server/routes/rss');
 app.use('/', rss);
+
+
+
+// Angular DIST output folder
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {

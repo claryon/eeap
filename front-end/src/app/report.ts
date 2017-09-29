@@ -1,7 +1,7 @@
 export class Report {
   timestamp: {
-    registration: {type: String, default: ''}, // Timestamp of record registration.
-    submission: {type: String, default: ''} // Date of report submission by issuer to the OAM.
+    registration: {type: Date, default: ''}, // Timestamp of record registration.
+    submission: {type: Date, default: ''} // Date of report submission by issuer to the OAM.
   };
 
   issuerIdentification: {
