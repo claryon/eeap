@@ -14,6 +14,7 @@ logs
 *.out
 *.pid
 *.gz
+**.swp
 
 pids
 logs
@@ -21,3 +22,5 @@ results
 
 npm-debug.log
 node_modules
+eth/node_config/**
+eth/genesis.json
