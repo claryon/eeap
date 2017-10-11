@@ -1,0 +1,9 @@
+{
+	"database":
+	{
+		"host": "mongo",
+		"name": "eeap",
+		"user": "eeap",
+		"pass": "HUJuZ8Cab5uCR"
+	}
+}

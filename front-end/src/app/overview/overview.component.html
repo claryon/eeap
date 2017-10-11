@@ -9,7 +9,7 @@
 	</thead>
 	<tbody>
   		<tr *ngFor="let report of reports">
-  			<td>{{ report.timestamp.submission | date : 'yyyy-MM-dd'}}</td>
+  			<td>{{ report.timestamp.submission | date : 'medium'}}</td>
   			<td>{{ report.reportIdentification.reportId }}</td>
   			<td>{{ report.issuerIdentification.name }}</td>
   			<td>

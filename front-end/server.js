@@ -1,24 +1,30 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
-const http = require('http');
 const app = express();
+const path = require('path');
+var fs			   = require('fs');
+var https          = require('https');
 
-// API file for interacting with MongoDB
-const api = require('./server/routes/api');
+var port = 443;
+var privateKey = fs.readFileSync('config/server.key', 'utf-8');
+var certificate = fs.readFileSync('config/server.crt', 'utf-8');
+var credentials = {key: privateKey, cert: certificate};
+
+
 
 // Parsers
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+app.use(bodyParser.urlencoded({ extended: true}));
 
 
-// API location
+// API
+const api = require('./server/routes/api');
 app.use('/api', api);
 
 // RSS
 const rss = require('./server/routes/rss');
 app.use('/', rss);
-
 
 
 // Angular DIST output folder
@@ -29,10 +35,9 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-//Set Port
-const port = process.env.PORT || '3000';
-app.set('port', port);
+// launch the application
+var httpsServer = https.createServer(credentials, app);
+httpsServer.listen(port, () => console.log(`Running on localhost:${port}`));
 
-const server = http.createServer(app);
-
-server.listen(port, () => console.log(`Running on localhost:${port}`));
+// expose app
+exports = module.exports = app;

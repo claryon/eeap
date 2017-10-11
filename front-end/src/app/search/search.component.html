@@ -33,6 +33,8 @@
 
 <h3>Search results</h3>
 
+<span ng-if="!reports.length">No search results</span>
+
 <table class="table">
 	<thead>
 		<th>Submission date</th>
@@ -42,7 +44,7 @@
 	</thead>
 	<tbody>
   		<tr *ngFor="let report of reports">
-  			<td>{{ report.timestamp.submission | date : 'yyyy-MM-dd'}}</td>
+  			<td>{{ report.timestamp.submission | date : 'medium'}}</td>
   			<td>{{ report.reportIdentification.reportId }}</td>
   			<td>{{ report.issuerIdentification.name }}</td>
   			<td>
