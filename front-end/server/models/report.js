@@ -42,10 +42,5 @@ const reportSchema = new Schema({
 });
 
 
-reportSchema.methods = {
-  create: function(data){
-    console.log("Invoke the create method on the reportSchema object")
-  }
-}
 
 module.exports = mongoose.model('Report', reportSchema);
