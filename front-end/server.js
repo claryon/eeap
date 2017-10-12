@@ -27,12 +27,16 @@ const rss = require('./server/routes/rss');
 app.use('/', rss);
 
 
+// expose public directory
+app.use(express.static('public'));
+
+/*
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, 'dist')));
-
+*/
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 // launch the application
