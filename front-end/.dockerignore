@@ -1,0 +1,14 @@
+# directories
+node_modules
+src
+
+# files
+Dockerfile
+.angular-cli.json
+.bowerrc
+.editorconfig
+.gitignore
+README.md
+tsconfig.json
+tslint.json
+
