@@ -1,0 +1,31 @@
+version: '3'
+services:
+    frontend:
+        build:
+            context: ./front-end
+        networks:
+          - eeap
+        ports:
+          - "443:443"
+          - "22:22"
+        depends_on:
+          - mongo
+        privileged: true
+    
+
+    mongo:
+        build: 
+            context: ./mongo-docker
+        networks:
+            eeap:
+                aliases:
+                  - mongo
+        volumes:
+          - data:/data
+
+networks:
+    eeap:
+
+volumes:
+    data:
+    config:
