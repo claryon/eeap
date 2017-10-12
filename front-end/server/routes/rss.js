@@ -3,27 +3,7 @@ const router = express.Router();
 const xmlify = require('xmlify');
 const config = require('config');
 
-//TEST
-const mongoose = require('mongoose');
-var db_host = config.get("database.host");
-var db_name = config.get("database.name");
-var db_user = config.get("database.user");
-var db_pass = config.get("database.pass");
-if (db_user == "") {
-    var mongo_url = 'mongodb://'+db_host+'/'+db_name;
-} else {
-    var mongo_url = 'mongodb://'+db_user+':'+db_pass+'@'+db_host+'/'+db_name;
-}
-
 var Report = require('../models/report');
-
-mongoose.Promise = global.Promise;
-var db = mongoose.connect(mongo_url, {
-  useMongoClient: true,
-});
-
-db.on('error', console.error.bind(console, 'MongoDB connection error: '));
-
 
 // Get reports
 router.get('/rss', (req, res) => {

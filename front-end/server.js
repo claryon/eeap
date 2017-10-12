@@ -17,6 +17,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(bodyParser.urlencoded({ extended: true}));
 
+require('./server/db_connect');
+
 
 // API
 const api = require('./server/routes/api');
@@ -30,10 +32,7 @@ app.use('/', rss);
 // expose public directory
 app.use(express.static('public'));
 
-/*
-// Angular DIST output folder
-app.use(express.static(path.join(__dirname, 'dist')));
-*/
+
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
