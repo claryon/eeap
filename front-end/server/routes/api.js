@@ -25,21 +25,12 @@ let response = {
 
 router.get('/reports/search', (req, res) => {
 
-    if (req.query.submissionDate == '') {
-        var query = {
-            $and: [
-                { 'reportIdentification.reportId': new RegExp(req.query.reportId, 'i') },
-                { 'issuerIdentification.name': new RegExp(req.query.reportIssuerName, 'i') }
-            ]
-        }
-    } else {
-        var query = {
-            $and: [
-                { 'timestamp.submission': new Date(req.query.submissionDate) },
-                { 'reportIdentification.reportId': new RegExp(req.query.reportId, 'i') },
-                { 'issuerIdentification.name': new RegExp(req.query.reportIssuerName, 'i') }
-            ]
-        }
+    var query = {
+        $and: [
+            { 'issuerIdentification.name': new RegExp(req.query.issuerName, 'i') },
+            { 'issuerIdentification.LEI': new RegExp(req.query.issuerLEI, 'i') },
+            { 'issuerIdentification.registrationCountry': new RegExp(req.query.issuerHomeMemberState, 'i') },
+        ]
     }
 
     Report.find(query).exec(function(err, reports) {

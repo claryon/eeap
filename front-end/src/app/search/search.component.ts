@@ -18,18 +18,18 @@ export class SearchComponent {
 	constructor(fb: FormBuilder, private _dataService: DataService) {
 
 		this.searchForm = fb.group({
-      'reportSubmissionDate': [''],
-      'reportId': [''],
-      'reportIssuerName': ['']
+      'issuerName': [''],
+      'issuerLEI': [''],
+      'issuerHomeMemberState': ['']
     });
 	}
 
   onSubmit(value: Object): void {
-    let reportSubmissionDate = this.searchForm.get('reportSubmissionDate').value;
-    let reportId = this.searchForm.get('reportId').value;
-    let reportIssuerName = this.searchForm.get('reportIssuerName').value;
+    let issuerName = this.searchForm.get('issuerName').value;
+    let issuerLEI = this.searchForm.get('issuerLEI').value;
+    let issuerHomeMemberState = this.searchForm.get('issuerHomeMemberState').value;
 
-    this._dataService.searchReports('submissionDate='+reportSubmissionDate+'&reportId='+reportId+'&reportIssuerName='+reportIssuerName).subscribe(res => this.reports = res);
+    this._dataService.searchReports('issuerName='+issuerName+'&issuerLEI='+issuerLEI+'&issuerHomeMemberState='+issuerHomeMemberState).subscribe(res => this.reports = res);
   }
   
 
