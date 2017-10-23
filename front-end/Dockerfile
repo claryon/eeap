@@ -15,12 +15,10 @@ WORKDIR /app
 
 # bundle app source
 RUN mkdir -p /app/config \
-	&& mkdir -p /app/dist \
 	&& mkdir -p /app/server \
 	&& mkdir -p /app/public
 
 COPY server.js /app/
-COPY dist/ /app/dist
 COPY config/ /app/config
 COPY server/ /app/server
 COPY public/ /app/public
