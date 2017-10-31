@@ -20,7 +20,7 @@ export class OverviewComponent implements OnInit {
 
 		// Access the Data Service's getReports() method we defined
 			this._dataService.getReports()
-			.subscribe(res => this.reports = res);
+			.then(res => this.reports = res);
 	}
 
 	ngOnInit() {

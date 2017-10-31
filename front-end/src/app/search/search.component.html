@@ -269,17 +269,36 @@
 	</div>
 
 	<div class="form-group row">
+		<label class="col-3 col-form-label" for="regulationType">Regulation Type</label>
+		<div class="col-4">
+			<select class="form-control" id="regulationType" [formControl]="searchForm.controls['regulationType']">
+				<option value="" selected>All regulation types</option>
+				<option value="A">Annual financial and audit reports</option>
+				<option value="B">Half-year financial and audit reports or limited reviews</option>
+				<option value="C">Payments to governments</option>
+				<option value="D">Choice of home Member State</option>
+				<option value="E">Inside information</option>
+				<option value="F">Notifications concerning voting rights</option>
+				<option value="G">Acquisition or disposal of the issuer's own shares</option>
+				<option value="H">Total number of voting rights and capital</option>
+				<option value="I">Changes in the rights attaching to the classes of shares or securities</option>
+				<option value="J">All information not falling under points above</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group row">
 		<button class="btn btn-primary" type="submit">Search</button>
 	</div>
 </div>
 </form>
 
 
-<h3>Search results</h3>
+<h3 *ngIf="reports">Search results</h3>
 
-<span ng-if="!reports.length">No search results</span>
+<span *ngIf="!reports || reports.length == 0">No search results</span>
 
-<table class="table">
+<table *ngIf="reports && reports.length !== 0" class="table">
 	<thead>
 		<th>Submission date</th>
 		<th>Report ID</th>

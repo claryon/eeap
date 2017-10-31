@@ -30,6 +30,7 @@ router.get('/reports/search', (req, res) => {
             { 'issuerIdentification.name': new RegExp(req.query.issuerName, 'i') },
             { 'issuerIdentification.LEI': new RegExp(req.query.issuerLEI, 'i') },
             { 'issuerIdentification.registrationCountry': new RegExp(req.query.issuerHomeMemberState, 'i') },
+            { 'reportIdentification.regulationType': new RegExp(req.query.regulationType, 'i') },
         ]
     }
 

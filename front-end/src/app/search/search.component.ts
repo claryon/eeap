@@ -20,7 +20,8 @@ export class SearchComponent {
 		this.searchForm = fb.group({
       'issuerName': [''],
       'issuerLEI': [''],
-      'issuerHomeMemberState': ['']
+      'issuerHomeMemberState': [''],
+      'regulationType': ['']
     });
 	}
 
@@ -28,8 +29,10 @@ export class SearchComponent {
     let issuerName = this.searchForm.get('issuerName').value;
     let issuerLEI = this.searchForm.get('issuerLEI').value;
     let issuerHomeMemberState = this.searchForm.get('issuerHomeMemberState').value;
+    let regulationType = this.searchForm.get('regulationType').value;
 
-    this._dataService.searchReports('issuerName='+issuerName+'&issuerLEI='+issuerLEI+'&issuerHomeMemberState='+issuerHomeMemberState).subscribe(res => this.reports = res);
+    this._dataService.searchReports('issuerName='+issuerName+'&issuerLEI='+issuerLEI+'&issuerHomeMemberState='+issuerHomeMemberState+'&regulationType='+regulationType)
+      .then(reports => this.reports = reports);
   }
   
 
