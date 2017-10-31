@@ -9,9 +9,6 @@ elif [ ! -f ./eth/geth ]; then
 fi
 
 echo "[*] Initiating geth data..."
-cd eth
-./deploy.sh
-cd ..
 
 pwd
 echo "[*] Geth data initialized."
