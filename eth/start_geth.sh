@@ -1,6 +1,6 @@
 #!/bin/bash
 
-geth="geth"
+geth="./geth"
 
 address=$(cat genesis.json |sed -n '/"alloc"/{n;p}' |sed 's/"//g' |sed 's/: {//g' |tr -d '\t')
 

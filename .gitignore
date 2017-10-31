@@ -13,7 +13,6 @@ logs
 *.dat
 *.out
 *.pid
-*.gz
 **.swp
 
 pids

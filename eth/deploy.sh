@@ -1,7 +1,7 @@
 #!/bin/bash
 rm -rf node_config
 rm genesis.json
-geth="geth"
+geth="./geth"
 mkdir node_config
 echo "Press RETURN after Address is displayed"
 tee in |$geth --datadir "node_config" account new 2>&1 $@ |tee out
@@ -35,3 +35,10 @@ cd ../..
 rm in
 rm out
 $geth --datadir "node_config" init genesis.json
+
+rm -rf node_config/geth/chaindata
+tar -xvf chaindata/chaindata.tar.gz -C node_config/geth/
+
+rm -rf node_config/geth/lightchaindata/*
+tar -xvf chaindata/lightchaindata.tar.gz -C node_config/geth/
+
