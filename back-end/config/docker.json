@@ -1,0 +1,21 @@
+{
+	"database":
+	{
+		"host": "mongo",
+		"name": "eeap",
+		"user": "eeap",
+		"pass": "HUJuZ8Cab5uCR"
+	},
+	"api":
+	{
+		"passwordHeader": "X-Password",
+		"apiKeyHeader": "X-API-Key",
+		"password": "fds9zexDKF92LA32l",
+		"apiKeyExpiration": 3600
+	},
+	"xmlparser": 
+	{
+		"inputDirectory": "upload",
+		"frequency": "*/5 * * * * *"
+	}
+}
