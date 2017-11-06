@@ -1,0 +1,21 @@
+{
+	"database":
+	{
+		"host": "127.0.0.1",
+		"name": "eeap",
+		"user": "",
+		"pass": ""
+	},
+	"api":
+	{
+		"passwordHeader": "X-Password",
+		"apiKeyHeader": "X-API-Key",
+		"password": "test123",
+		"apiKeyExpiration": 3600
+	},
+	"xmlparser": 
+	{
+		"inputDirectory": "upload",
+		"frequency": "*/5 * * * * *"
+	}
+}

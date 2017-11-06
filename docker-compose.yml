@@ -17,7 +17,15 @@ services:
         volumes:
           - data:$MONGO_DATADIR
 
+    back-end:
+        build: ./back-end
+        depends_on:
+         - mongo
+        extra_hosts:
+         - "dockerhost:$DOCKERHOST"
+
  
+
 
 
 volumes:
