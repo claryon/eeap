@@ -1,4 +1,4 @@
-import { Component, OnInit,Pipe } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Import the DataService
 import { DataService } from '../data.service';
@@ -10,19 +10,6 @@ import { Report } from '../report';
   styleUrls: ['./overview.component.css']
   })
   
-  @Pipe({
-  name: 'reverse',
-  pure: false
-  })
-
-export class ReversePipe {
-	transform (values) {
-		if(values){
-			return values.reverse();
-		}
-	}
-
-}
 export class OverviewComponent implements OnInit {
 
 

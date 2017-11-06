@@ -46,7 +46,6 @@ module.exports = "<nav class=\"navbar navbar-expand navbar-light bg-light\">\n\t
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export ReversePipe */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -55,33 +54,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-var ReversePipe = (function () {
-    function ReversePipe() {
-    }
-    ReversePipe.prototype.transform = function (values) {
-        if (values) {
-            return values.reverse();
-        }
-    };
-    return ReversePipe;
-}());
-ReversePipe = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-root',
-        template: __webpack_require__("../../../../../src/app/app.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/app.component.css")]
-    }),
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
-        name: 'reverse'
-    })
-], ReversePipe);
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
 var AppComponent = (function () {
     function AppComponent() {
     }
     return AppComponent;
 }());
+AppComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-root',
+        template: __webpack_require__("../../../../../src/app/app.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/app.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], AppComponent);
 
 //# sourceMappingURL=app.component.js.map
 
@@ -242,7 +231,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/overview/overview.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Overview of reports</h2>\n\n<table class=\"table\">\n\t<thead>\n\t\t<th>Submission date</th>\n\t\t<th>Report ID</th>\n\t\t<th>Issuer name</th>\n\t\t<th></th>\n\t</thead>\n\t<tbody>\n  \t\t<tr *ngFor=\"let report of reports | reverse\">\n  \t\t\t<td>{{ report.timestamp.submission | date : 'medium'}}</td>\n  \t\t\t<td>{{ report.reportIdentification.reportId }}</td>\n  \t\t\t<td>{{ report.issuerIdentification.name }}</td>\n  \t\t\t<td>\n  \t\t\t\t<a href=\"{{ report.reportSource.NCAReportURL}}\">Download</a>\n  \t\t\t</td>\n  \t\t</tr>\n  \t</tbody>\n</table>\n"
+module.exports = "<h2>Overview of reports</h2>\n\n<table class=\"table\">\n\t<thead>\n\t\t<th>Submission date</th>\n\t\t<th>Report ID</th>\n\t\t<th>Issuer name</th>\n\t\t<th></th>\n\t</thead>\n\t<tbody>\n  \t\t<tr *ngFor=\"let report of reports.reverse()\">\n  \t\t\t<td>{{ report.timestamp.submission | date : 'medium'}}</td>\n  \t\t\t<td>{{ report.reportIdentification.reportId }}</td>\n  \t\t\t<td>{{ report.issuerIdentification.name }}</td>\n  \t\t\t<td>\n  \t\t\t\t<a href=\"{{ report.reportSource.NCAReportURL}}\">Download</a>\n  \t\t\t</td>\n  \t\t</tr>\n  \t</tbody>\n</table>\n"
 
 /***/ }),
 
@@ -250,37 +239,20 @@ module.exports = "<h2>Overview of reports</h2>\n\n<table class=\"table\">\n\t<th
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export ReversePipe */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OverviewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
-var ReversePipe = (function () {
-    function ReversePipe() {
-    }
-    ReversePipe.prototype.transform = function (values) {
-        if (values) {
-            return values.reverse();
-        }
-    };
-    return ReversePipe;
-}());
-ReversePipe = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-overview',
-        template: __webpack_require__("../../../../../src/app/overview/overview.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/overview/overview.component.css")]
-    }),
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
-        name: 'reverse',
-        pure: false
-    })
-], ReversePipe);
+// Import the DataService
 
 var OverviewComponent = (function () {
     // Create an instance of the DataService through dependency injection
@@ -295,7 +267,16 @@ var OverviewComponent = (function () {
     };
     return OverviewComponent;
 }());
+OverviewComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-overview',
+        template: __webpack_require__("../../../../../src/app/overview/overview.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/overview/overview.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === "function" && _a || Object])
+], OverviewComponent);
 
+var _a;
 //# sourceMappingURL=overview.component.js.map
 
 /***/ }),

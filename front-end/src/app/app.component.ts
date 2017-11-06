@@ -1,4 +1,4 @@
-import { Component,Pipe } from '@angular/core';
+import { Component} from '@angular/core';
 
 
 @Component({
@@ -7,18 +7,6 @@ import { Component,Pipe } from '@angular/core';
   styleUrls: ['./app.component.css']
   })
 
-  @Pipe({
-  name: 'reverse'
-  })
-
-  export class ReversePipe {
-  
-  transform (values) {
-  if(values){
-		return values.reverse();
-		}
-	}
-  }
 export class AppComponent {
   
   constructor() {}

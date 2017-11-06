@@ -8,7 +8,7 @@
 		<th></th>
 	</thead>
 	<tbody>
-  		<tr *ngFor="let report of reports | reverse">
+  		<tr *ngFor="let report of reports.reverse()">
   			<td>{{ report.timestamp.submission | date : 'medium'}}</td>
   			<td>{{ report.reportIdentification.reportId }}</td>
   			<td>{{ report.issuerIdentification.name }}</td>
