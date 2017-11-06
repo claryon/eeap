@@ -231,7 +231,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/overview/overview.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Overview of reports</h2>\n\n<table class=\"table\">\n\t<thead>\n\t\t<th>Submission date</th>\n\t\t<th>Report ID</th>\n\t\t<th>Issuer name</th>\n\t\t<th></th>\n\t</thead>\n\t<tbody>\n  \t\t<tr *ngFor=\"let report of reports.reverse()\">\n  \t\t\t<td>{{ report.timestamp.submission | date : 'medium'}}</td>\n  \t\t\t<td>{{ report.reportIdentification.reportId }}</td>\n  \t\t\t<td>{{ report.issuerIdentification.name }}</td>\n  \t\t\t<td>\n  \t\t\t\t<a href=\"{{ report.reportSource.NCAReportURL}}\">Download</a>\n  \t\t\t</td>\n  \t\t</tr>\n  \t</tbody>\n</table>\n"
+module.exports = "<h2>Overview of reports</h2>\n\n<table class=\"table\">\n\t<thead>\n\t\t<th>Submission date</th>\n\t\t<th>Report ID</th>\n\t\t<th>Issuer name</th>\n\t\t<th></th>\n\t</thead>\n\t<tbody>\n  \t\t<tr *ngFor=\"let report of reports\">\n  \t\t\t<td>{{ report.timestamp.submission | date : 'medium'}}</td>\n  \t\t\t<td>{{ report.reportIdentification.reportId }}</td>\n  \t\t\t<td>{{ report.issuerIdentification.name }}</td>\n  \t\t\t<td>\n  \t\t\t\t<a href=\"{{ report.reportSource.NCAReportURL}}\">Download</a>\n  \t\t\t</td>\n  \t\t</tr>\n  \t</tbody>\n</table>\n"
 
 /***/ }),
 
