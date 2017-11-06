@@ -179,7 +179,7 @@ var DataService = (function () {
     DataService.prototype.getReports = function () {
         return this._http.get("/api/reports")
             .toPromise()
-            .then(function (response) { return response.json().reverse().data; })
+            .then(function (response) { return response.json().data; })
             .catch(this.handleError);
     };
     DataService.prototype.getReport = function (reportId) {
