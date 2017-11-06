@@ -8,7 +8,7 @@ import { Report } from '../report';
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.css']
-})
+  })
 export class OverviewComponent implements OnInit {
 
 
