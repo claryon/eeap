@@ -15,7 +15,7 @@ export class DataService {
   getReports()  {
     return this._http.get("/api/reports")
       .toPromise()
-      .then(response => response.json().data as Report[])
+      .then(response => response.json().reverse().data as Report[])
       .catch(this.handleError);
   }
 
