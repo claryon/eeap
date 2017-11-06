@@ -43,7 +43,7 @@ router.get('/reports/search', (req, res) => {
 
 // Get reports
 router.get('/reports', (req, res) => {
-    Report.find().exec(function(err, reports) {
+    Report.find().sort({"timestamp.submission":-1}).exec(function(err, reports) {
         if (err) return sendError(err, res);
         response.data = reports;
         res.json(response);
