@@ -6,11 +6,8 @@ function checkWork() {
 		console.log("== Pending transactions! Mining...");
 		miner.start(mining_threads);
 	} else {
-		// After all work is done keep mining for another 30 seconds
-		setTimeout(function(){
-			miner.stop();
-			console.log("== No transactions! Mining stopped.")
-		},50000);
+		return;
+
 	}
 }
 
