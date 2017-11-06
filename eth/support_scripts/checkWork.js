@@ -6,12 +6,18 @@ function checkWork() {
 		console.log("== Pending transactions! Mining...");
 		miner.start(mining_threads);
 	} else {
-		miner.stop();
-		console.log("== No transactions! Mining stopped.");
+		// After all work is done keep mining for another 30 seconds
+		setTimeout(function(){
+			miner.stop();
+			console.log("== No transactions! Mining stopped.")
+		},50000);
 	}
 }
 
-eth.filter("latest", function(err, block) { checkWork(); });
-eth.filter("pending", function(err, block) { checkWork(); });
+//eth.filter("latest", function(err, block) { checkWork(); });
+//eth.filter("pending", function(err, block) { checkWork(); });
 
-checkWork();
+
+setTimeout(function(){
+	checkWork();
+},50000);
