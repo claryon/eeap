@@ -6,8 +6,8 @@ function checkWork() {
 		console.log("== Pending transactions! Mining...");
 		miner.start(mining_threads);
 	} else {
+		miner.stop()
 		return;
-
 	}
 }
 
@@ -15,6 +15,6 @@ function checkWork() {
 //eth.filter("pending", function(err, block) { checkWork(); });
 
 
-setTimeout(function(){
+setInterval(function(){
 	checkWork();
 },50000);
